@@ -13,13 +13,7 @@
 set -e
 
 if [ -r /.firstboot.tmp ]; then
-        export DEBIAN_FRONTEND=noninteractive
-
-        echo "${TIMEZONE:-UTC}" > /etc/timezone
-        dpkg-reconfigure -f noninteractive tzdata >>/tmp/install.log
-
         echo "Creating MySQL database"
-
         # Check MYSQL_HOST
         if [ -z "$MYSQL_HOST" ]; then
                 echo "MYSQL_HOST is not set. Aborting."
